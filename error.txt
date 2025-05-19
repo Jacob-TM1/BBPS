@@ -1,21 +1,15 @@
 ABSA Bank: Development server logged in successfully
 BBPS-Super Region: 7 elements to process
 
-  0%|          | 0/1 [00:00<?, ?it/s]
-  0%|          | 0/1 [00:00<?, ?it/s]
-Traceback (most recent call last):
-  File "c:\Programming\TM1\BBPS\4.Dashboards\bbps_generate_dashboards_local.py", line 132, in <module>
-    main()
-  File "c:\Programming\TM1\BBPS\4.Dashboards\bbps_generate_dashboards_local.py", line 120, in main
-    results = list(tqdm(pool.imap(partial(produce_dashboard_batch, excel_app=init_excel_app()), 
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python310\site-packages\tqdm\std.py", line 1195, in __iter__
-    for obj in iterable:
-  File "C:\Program Files\Python310\lib\multiprocessing\pool.py", line 870, in next
-    raise value
-  File "C:\Program Files\Python310\lib\multiprocessing\pool.py", line 537, in _handle_tasks
-    put(task)
-  File "C:\Program Files\Python310\lib\multiprocessing\connection.py", line 211, in send
-    self._send_bytes(_ForkingPickler.dumps(obj))
-  File "C:\Program Files\Python310\lib\multiprocessing\reduction.py", line 51, in dumps
-    cls(buf, protocol).dump(obj)
-TypeError: cannot pickle 'PyIDispatch' object
+  0%|          | 0/7 [00:00<?, ?it/s]
+ 14%|#4        | 1/7 [00:06<00:38,  6.39s/it]
+ 29%|##8       | 2/7 [00:16<00:42,  8.57s/it]
+100%|##########| 7/7 [00:16<00:00,  2.35s/it]
+Error processing CEN SR002-Central: (-2147418111, 'Call was rejected by callee.', None, None)
+Error processing GN & L SR003-GN & L: Property 'Excel.Application.ScreenUpdating' can not be set.
+Error processing GS SR004-Gauteng South: Property 'Excel.Application.ScreenUpdating' can not be set.
+Error processing KZN SR005-KwaZulu-Natal: Property 'Excel.Application.ScreenUpdating' can not be set.
+Error processing MP SR007-Mpumalanga: Property 'Excel.Application.ScreenUpdating' can not be set.
+Error processing WC SR006-Western Cape: Property 'Excel.Application.ScreenUpdating' can not be set.
+Created 1 files for BBPS-Super Region
+Completed in: 00:00:17
