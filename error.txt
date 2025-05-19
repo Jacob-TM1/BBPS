@@ -1,0 +1,21 @@
+ABSA Bank: Development server logged in successfully
+BBPS-Super Region: 7 elements to process
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+  0%|          | 0/1 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "c:\Programming\TM1\BBPS\4.Dashboards\bbps_generate_dashboards_local.py", line 132, in <module>
+    main()
+  File "c:\Programming\TM1\BBPS\4.Dashboards\bbps_generate_dashboards_local.py", line 120, in main
+    results = list(tqdm(pool.imap(partial(produce_dashboard_batch, excel_app=init_excel_app()), 
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python310\site-packages\tqdm\std.py", line 1195, in __iter__
+    for obj in iterable:
+  File "C:\Program Files\Python310\lib\multiprocessing\pool.py", line 870, in next
+    raise value
+  File "C:\Program Files\Python310\lib\multiprocessing\pool.py", line 537, in _handle_tasks
+    put(task)
+  File "C:\Program Files\Python310\lib\multiprocessing\connection.py", line 211, in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+  File "C:\Program Files\Python310\lib\multiprocessing\reduction.py", line 51, in dumps
+    cls(buf, protocol).dump(obj)
+TypeError: cannot pickle 'PyIDispatch' object
