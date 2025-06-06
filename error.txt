@@ -1,131 +1,277 @@
-ABSA Bank: Development server logged in successfully
-BBPS-Super Region: 7 elements
+Sub CleanUp()
+'On Error Resume Next
 
-  0%|          | 0/2 [00:00<?, ?it/s]Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 116, in spawn_main
-    exitcode = _main(fd, parent_sentinel)
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 125, in _main
-    prepare(preparation_data)
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 236, in prepare
-    _fixup_main_from_path(data['init_main_from_path'])
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 287, in _fixup_main_from_path
-    main_content = runpy.run_path(main_path,
-  File "C:\Program Files\Python310\lib\runpy.py", line 289, in run_path
-    return _run_module_code(code, init_globals, run_name,
-  File "C:\Program Files\Python310\lib\runpy.py", line 96, in _run_module_code
-    _run_code(code, mod_globals, init_globals,
-  File "C:\Program Files\Python310\lib\runpy.py", line 86, in _run_code
-    exec(code, run_globals)
-  File "c:\Programming\TM1\BBPS\4.Dashboards\bbps_generate_dashboards_local.py", line 105, in <module>
-    list(tqdm(executor.map(update_dashboard_batch, chunks), total=len(chunks)))
-  File "C:\Program Files\Python310\lib\concurrent\futures\process.py", line 761, in map
-    results = super().map(partial(_process_chunk, fn),
-  File "C:\Program Files\Python310\lib\concurrent\futures\_base.py", line 598, in map
-Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 116, in spawn_main
-    exitcode = _main(fd, parent_sentinel)
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 125, in _main
-    prepare(preparation_data)
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 236, in prepare
-    _fixup_main_from_path(data['init_main_from_path'])
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 287, in _fixup_main_from_path
-    main_content = runpy.run_path(main_path,
-  File "C:\Program Files\Python310\lib\runpy.py", line 289, in run_path
-    return _run_module_code(code, init_globals, run_name,
-  File "C:\Program Files\Python310\lib\runpy.py", line 96, in _run_module_code
-    _run_code(code, mod_globals, init_globals,
-  File "C:\Program Files\Python310\lib\runpy.py", line 86, in _run_code
-    exec(code, run_globals)
-  File "c:\Programming\TM1\BBPS\4.Dashboards\bbps_generate_dashboards_local.py", line 105, in <module>
-    list(tqdm(executor.map(update_dashboard_batch, chunks), total=len(chunks)))
-  File "C:\Program Files\Python310\lib\concurrent\futures\process.py", line 761, in map
-    results = super().map(partial(_process_chunk, fn),
-  File "C:\Program Files\Python310\lib\concurrent\futures\_base.py", line 598, in map
-    fs = [self.submit(fn, *args) for args in zip(*iterables)]
-  File "C:\Program Files\Python310\lib\concurrent\futures\_base.py", line 598, in <listcomp>
-    fs = [self.submit(fn, *args) for args in zip(*iterables)]
-  File "C:\Program Files\Python310\lib\concurrent\futures\process.py", line 732, in submit
-    self._adjust_process_count()
-  File "C:\Program Files\Python310\lib\concurrent\futures\process.py", line 692, in _adjust_process_count
-    self._spawn_process()
-  File "C:\Program Files\Python310\lib\concurrent\futures\process.py", line 709, in _spawn_process
-    p.start()
-  File "C:\Program Files\Python310\lib\multiprocessing\process.py", line 121, in start
-    self._popen = self._Popen(self)
-  File "C:\Program Files\Python310\lib\multiprocessing\context.py", line 327, in _Popen
-    return Popen(process_obj)
-  File "C:\Program Files\Python310\lib\multiprocessing\popen_spawn_win32.py", line 45, in __init__
-    prep_data = spawn.get_preparation_data(process_obj._name)
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 154, in get_preparation_data
-    _check_not_importing_main()
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 134, in _check_not_importing_main
-    raise RuntimeError('''
-RuntimeError: 
-        An attempt has been made to start a new process before the
-        current process has finished its bootstrapping phase.
+Dim sPath As String
+Dim sFile, sFilter As String
+Dim Wb As Workbook
+Dim ws As Worksheet
+Dim strSegment, strFilename As String
+Dim ThisWB, ThisWS
+Dim currrow, i As Integer
+Dim arrFilename, ret
+Dim cell As Range
+Dim VBObj As Variant
+Dim strSaveFormat As String
+Dim strNewName As String
+Dim strSaveOption
+Dim fileprefix
+Dim fList() As Variant
+Dim x As Variant
+Dim sSiteName As String
+Dim sAlias As String
 
-        This probably means that you are not using fork to start your
-        child processes and you have forgotten to use the proper idiom
-        in the main module:
+'Cleanup list of file
+currrow = 0
+Do Until Range("FilesCleaned").Offset(currrow, 0).Value = ""
+    Range("FilesCleaned").Offset(currrow, 0).Clear
+    currrow = currrow + 1
+Loop
 
-            if __name__ == '__main__':
-                freeze_support()
-                ...
+'---Check if user is logged into TM1---
+ActiveSheet.Calculate
 
-        The "freeze_support()" line can be omitted if the program
-        is not going to be frozen to produce an executable.
-    fs = [self.submit(fn, *args) for args in zip(*iterables)]
-  File "C:\Program Files\Python310\lib\concurrent\futures\_base.py", line 598, in <listcomp>
-ABSA Bank: Development server logged in successfully
-BBPS-Super Region: 7 elements
-    fs = [self.submit(fn, *args) for args in zip(*iterables)]
-  File "C:\Program Files\Python310\lib\concurrent\futures\process.py", line 732, in submit
-    self._adjust_process_count()
-  File "C:\Program Files\Python310\lib\concurrent\futures\process.py", line 692, in _adjust_process_count
-    self._spawn_process()
-  File "C:\Program Files\Python310\lib\concurrent\futures\process.py", line 709, in _spawn_process
-    p.start()
-  File "C:\Program Files\Python310\lib\multiprocessing\process.py", line 121, in start
-    self._popen = self._Popen(self)
-  File "C:\Program Files\Python310\lib\multiprocessing\context.py", line 327, in _Popen
-    return Popen(process_obj)
-  File "C:\Program Files\Python310\lib\multiprocessing\popen_spawn_win32.py", line 45, in __init__
-    prep_data = spawn.get_preparation_data(process_obj._name)
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 154, in get_preparation_data
-    _check_not_importing_main()
-  File "C:\Program Files\Python310\lib\multiprocessing\spawn.py", line 134, in _check_not_importing_main
-    raise RuntimeError('''
-RuntimeError: 
-        An attempt has been made to start a new process before the
-        current process has finished its bootstrapping phase.
+If Clean.Range("TM1Username") = "" Then
+    MsgBox "Not logged into TM1. Please log in first", vbExclamation
+    Exit Sub
+End If
 
-        This probably means that you are not using fork to start your
-        child processes and you have forgotten to use the proper idiom
-        in the main module:
+Application.FileDialog(msoFileDialogFolderPicker).InitialFileName = Range("LastPath")
+Application.FileDialog(msoFileDialogFolderPicker).Title = "Select the directory to process"
 
-            if __name__ == '__main__':
-                freeze_support()
-                ...
+sPath = Application.FileDialog(msoFileDialogFolderPicker).Show
+If sPath = 0 Or sPath = ActiveWorkbook.Path Then Exit Sub
 
-        The "freeze_support()" line can be omitted if the program
-        is not going to be frozen to produce an executable.
-ABSA Bank: Development server logged in successfully
-BBPS-Super Region: 7 elements
+sPath = Application.FileDialog(msoFileDialogFolderPicker).SelectedItems.Item(1) & "\"
+ChDir sPath
 
-  0%|          | 0/2 [00:05<?, ?it/s]
-Traceback (most recent call last):
-  File "c:\Programming\TM1\BBPS\4.Dashboards\bbps_generate_dashboards_local.py", line 105, in <module>
-    list(tqdm(executor.map(update_dashboard_batch, chunks), total=len(chunks)))
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python310\site-packages\tqdm\std.py", line 1195, in __iter__
-    for obj in iterable:
-  File "C:\Program Files\Python310\lib\concurrent\futures\process.py", line 570, in _chain_from_iterable_of_lists
-    for element in iterable:
-  File "C:\Program Files\Python310\lib\concurrent\futures\_base.py", line 609, in result_iterator
-    yield fs.pop().result()
-  File "C:\Program Files\Python310\lib\concurrent\futures\_base.py", line 446, in result
-    return self.__get_result()
-  File "C:\Program Files\Python310\lib\concurrent\futures\_base.py", line 391, in __get_result
-    raise self._exception
-concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+ThisWB = Application.ActiveWorkbook.Name
+ThisWS = Application.ActiveSheet.Name
+
+Application.Range("LastPath").Value = sPath
+sFile = Dir(sPath & "*.xlsm")
+
+If sFile = "" Then
+    MsgBox "Directory appears empty - please verify.", vbOKOnly, "Error Processing Directory"
+    Exit Sub
+End If
+
+sFilter = Range("Filter").Value
+
+'Do not process macros in the workbook we are about to open
+Application.ScreenUpdating = False
+Application.EnableEvents = False
+Application.AskToUpdateLinks = False
+Application.CalculateBeforeSave = False
+Application.DisplayAlerts = False
+Application.Interactive = True
+Application.CalculateBeforeSave = False
+
+Application.Calculation = xlCalculationManual
+Application.CalculateBeforeSave = False
+
+'strSaveFormat = Range("SaveFormat")
+'Select Case strSaveFormat
+'    Case "xls"
+'strSaveOption = xlExcel8
+strSaveOption = xlOpenXMLWorkbook
+'    Case Else
+'        strSaveOption = xlOpenXMLWorkbookMacroEnabled
+'End Select
+
+currrow = 0
+Do While sFile <> ""
+        ReDim Preserve fList(currrow + 1)
+        fList(currrow) = sFile
+        currrow = currrow + 1
+
+        'Next File
+        sFile = Dir
+Loop
+
+currrow = 0
+For currrow = 0 To UBound(fList) - 1
+
+ '   If InStr(1, UCase(fList(currrow)), UCase(sFilter)) > 0 Or sFilter = "" Then
+    Range("FilesCleaned").Offset(currrow, 0).Value = fList(currrow)
+    Set Wb = Workbooks.Open(sPath & fList(currrow))
+    'Application.ScreenUpdating = True
+    'Application.StatusBar = Wb.Name
+    Application.ScreenUpdating = False
+         
+    Application.Run "Tm1Recalc"
+    Application.EnableEvents = False
+    
+    
+    
+    If UCase(Clean.Range("Filter").Value) = "BBPS" Then
+        Sheets("Master").Select
+        Sheets("Master").Activate
+        Sheets("Master").Calculate
+    End If
+    
+    ActiveSheet.Range("B20:C23").NumberFormat = "@"
+    
+    DoGraphs
+    Index_Update_ConditionalFormat
+    
+    For Each ws In Wb.Worksheets
+        
+        Application.StatusBar = Wb.Name & " - " & ws.Name
+        Debug.Print Wb.Name & " - " & ws.Name
+
+        ws.Activate
+        'ws.Calculate
+        'ws.PageSetup.PrintQuality = 600
+
+        Range("a1").Select
+        If Left(ws.Name, 2) <> "R-" And Left(ws.Name, 2) <> "Z-" Then
+            ActiveWindow.Zoom = 100
+        End If
+
+        ' Select all cells with formulas then replace DBRAs
+        On Error Resume Next
+        Selection.SpecialCells(xlCellTypeFormulas, 23).Select
+        For Each cell In Selection
+            If InStr(1, cell.Formula, "DBRA(") > 0 Or InStr(1, cell.Formula, "DBRW(") > 0 _
+            Or InStr(1, cell.Formula, "SUBNM(") > 0 Or InStr(1, cell.Formula, "DBR(") > 0 _
+            Or InStr(1, cell.Formula, "ELPAR(") > 0 Or InStr(1, cell.Formula, "DBS(") > 0 _
+            Or InStr(1, cell.Formula, "ELCOMPN(") > 0 Or InStr(1, cell.Formula, "SUBSIZ(") > 0 _
+            Or InStr(1, cell.Formula, "VIEW(") > 0 Or InStr(1, cell.Formula, "DIMNM(") > 0 _
+            Or InStr(1, cell.Formula, "TM1RPTROW(") > 0 Or InStr(1, cell.Formula, "CELLCHART(") > 0 _
+            Or InStr(1, cell.Formula, "DBNA(") Or InStr(1, cell.Formula, "ELLEV(") > 0 Then
+                If cell.Value = "*KEY_ERR" Or cell.Value = "" Then
+                    cell.Formula = 0
+                Else
+                    cell.Formula = cell.Value
+                End If
+            End If
+        Next
+
+        With ActiveWindow
+            .ScrollRow = 1
+            .ScrollColumn = 1
+            Call Cells(.ScrollRow, .ScrollColumn).Select
+        End With
+        
+        If (Left(ws.Name, 2) = "R-" Or Left(ws.Name, 2) = "Z-") And ws.Name <> "Z-Data" Then
+            ws.Visible = xlSheetHidden
+        End If
+        
+        On Error GoTo 0
+
+    Next
+
+    'Remove PMF and other macros
+'    For Each VBObj In Wb.VBProject.VBComponents
+'        If VBObj.Name = "modClean" Then
+'            MsgBox "Trying To Clean This Workbook!!!", vbCritical
+'            Exit Sub
+'        Else
+'            If VBObj.Type <> 1 Then
+'                '?
+'            Else
+'                Wb.VBProject.VBComponents.Remove Wb.VBProject.VBComponents.Item(VBObj.Name)
+'            End If
+'            For x = Wb.VBProject.VBComponents.Count To 1 Step -1
+'                    Wb.VBProject.VBComponents(x).CodeModule.DeleteLines 1, Wb.VBProject.VBComponents(x).CodeModule.CountOfLines
+'            Next x
+'        End If
+'    Next
+'
+'    'Save and Close
+'    arrFilename = Split(fList(currrow), ".")
+'    Dim bNewName As Boolean
+'    bNewName = False
+'
+'    strFilename = ""
+'    For i = 0 To UBound(arrFilename) - 1
+'        If i > 0 Then strFilename = strFilename & "."
+'        strFilename = strFilename & arrFilename(i)
+'    Next
+'    strFilename = strFilename & "." & strSaveFormat
+'    bNewName = True
+    
+    'Check to see if we need to remove leading template prefix
+'    fileprefix = Val(Left(arrFilename(0), 3))
+'    If WorksheetFunction.IsNumber(fileprefix) Then
+'            'Remove the prefix and save with new name
+'            strFilename = Mid(strFilename, 4, Len(strFilename))
+'            bNewName = True
+'    End If
+                 
+'    If bNewName = True Then
+'       If fList(currrow) <> strFilename Then
+'           Application.DisplayAlerts = False
+'           Wb.SaveAs Filename:=strFilename, FileFormat:=strSaveOption
+'       Else
+'           Wb.Save
+'       End If
+'       Wb.Close False
+'       If fList(currrow) <> strFilename Then Kill fList(currrow)
+'    Else
+'            'Save the file we opened
+'            Wb.Close True
+'    End If
+            
+    'Open the file and then save it as PDF
+    'Set Wb = Workbooks.Open(sPath & fList(currrow))
+    
+    
+    '---Get updated site name----
+    If (Run("ELLEV", Range("Dim_Site").Value, Range("Site").Value) = 0) Then
+        sAlias = Run("DBRA", Range("Dim_Site").Value, Range("Site").Value, "FileName")
+        If Range("Site").Value = sAlias Then
+            sAlias = "COV_" & sAlias
+        End If
+        strNewName = Replace(Wb.Name, Range("Site").Value, sAlias)
+    Else
+        strNewName = Wb.Name
+    End If
+    
+    Application.StatusBar = Wb.Name
+    
+    
+    strNewName = Replace(strNewName, ".xlsm", ".xlsx")
+    
+    'Sheets(Array("Master", "Company", "Customer", "Colleague", "Citizenship", "Conduct")).Select
+        
+
+    If UCase(Clean.Range("Filter").Value) = "BBPS" Then
+        Sheets("Master").Select
+    ElseIf UCase(Clean.Range("Filter").Value) = "BBSA" Then
+        Sheets("Scoring Outcome").Select
+    End If
+    
+    Range("E5").Select
+
+'    ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, Filename:= _
+'    sPath & "\" & strNewName, Quality:=xlQualityStandard, IncludeDocProperties:=False, IgnorePrintAreas _
+'        :=False, OpenAfterPublish:=False
+    
+    'Wb.Save
+    Application.DisplayAlerts = False
+    Wb.SaveAs Filename:=strNewName, FileFormat:=strSaveOption
+'    Wb.Save
+    Wb.Close False
+    
+
+   ' End If
+    
+    'Next File
+Skip:
+Next
+
+    Application.Interactive = True
+    Application.StatusBar = False
+    Application.ScreenUpdating = True
+    Application.EnableEvents = True
+    Application.AskToUpdateLinks = True
+    Application.DisplayAlerts = True
+    
+    If currrow = 0 Then
+        MsgBox "Nothing found", vbInformation, "Done"
+    Else
+        MsgBox "Cleanup completed - " & Str(currrow) & " files cleaned.", vbInformation, "Done"
+    End If
+
+End Sub
