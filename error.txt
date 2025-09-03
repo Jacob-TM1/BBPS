@@ -1,21 +1,53 @@
-Traceback (most recent call last):
-  File "c:\Programming\TM1\Python\Tanzania\monitoring_services.py", line 41, in <module>
+from TM1py.Services import TM1Service
+
+address='22.88.200.230'
+port=5001
+user='Admin'
+password='admintanzania'
+ssl=False
+
+with TM1Service(address=address, port=port, user=user, password=password, ssl=ssl) as tm1:
+
+    source_dim = "_S-Dummy"
+    target_dim = "HIST-" + source_dim
+
+    # 1. Get attributes from source
+    source_hierarchy = tm1.dimensions.hierarchies.get(source_dim, source_dim)
+    source_attrs = source_hierarchy.element_attributes
+
+    target_hierarchy = tm1.dimensions.hierarchies.get(target_dim, target_dim)
+    target_attrs = [a.name for a in target_hierarchy.element_attributes]
+
+    # 2. Create missing attributes in target
+    for attr in source_attrs:
+        if attr.name not in target_attrs:
+            tm1.dimensions.add_dimension_attribute(target_dim, attr.name, attr.attribute_type)
+
+    # 3. Prepare cubes
+    source_attr_cube = f"}}ElementAttributes_{source_dim}"
+    target_attr_cube = f"}}ElementAttributes_{target_dim}"
+
+    # 4. Get elements
+    source_elements = [e.name for e in source_hierarchy.elements.values()]
+    target_elements = set(e.name for e in target_hierarchy.elements.values())
+
+    # 5. Fetch all attribute values from source cube
+    mdx = fr"""
+    SELECT
+        {{ {','.join([f'[{source_dim}].[{el}]' for el in source_elements])} }} ON ROWS,
+        {{ {','.join([f'[}}ElementAttributes_{source_dim}].[{attr.name}]' for attr in source_attrs])} }} ON COLUMNS
+    FROM [{source_attr_cube}]
+    """
     cellset = tm1.cubes.cells.execute_mdx(mdx)
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 1879, in execute_mdx
-    cellset_id = self.create_cellset(mdx=mdx, sandbox_name=sandbox_name, **kwargs)
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 4346, in create_cellset
-    response = self._rest.POST(url=url, data=json.dumps(data, ensure_ascii=False), **kwargs)
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 543, in POST
-    response = self.request(
-        method='post',
-    ...<7 lines>...
-        encoding=encoding
-    )
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 319, in request
-    self.verify_response(response=response)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 918, in verify_response
-    raise TM1pyRestException(response.text,
-    ...<2 lines>...
-                             headers=response.headers)
-TM1py.Exceptions.Exceptions.TM1pyRestException: Text: '{"error":{"code":"501","message":"Syntax error at or near: '[}ElementAttributes__S-Dummy]\n    ', character position 81"}}' - Status Code: 400 - Reason: 'Bad Request' - Headers: {'Content-Length': '131', 'Connection': 'keep-alive', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Type': 'application/json; charset=utf-8', 'OData-Version': '4.0'}
+
+    # 6. Write values into target cube
+    for coords, cell in cellset.items():
+        element, attr = coords  # coords = (element, attribute)
+        value = cell["Value"]
+        if element in target_elements and value not in ("", None):
+            tm1.cubes.cells.write_value(
+                value=value,
+                cube_name=target_attr_cube,
+                coordinates=[element, attr]
+            )
+
