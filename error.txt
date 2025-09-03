@@ -1,11 +1,8 @@
-[Running] python -u "c:\Programming\TM1\Python\Tanzania\monitoring_services.py"
 Traceback (most recent call last):
-  File "c:\Programming\TM1\Python\Tanzania\monitoring_services.py", line 45, in <module>
-    values = tm1.cubes.cells.execute_mdx_dataframe(mdx)
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Utils\Utils.py", line 146, in wrapper
-    return func(self, *args, **kwargs)
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 2480, in execute_mdx_dataframe
-    cellset_id = self.create_cellset(mdx, sandbox_name=sandbox_name, **kwargs)
+  File "c:\Programming\TM1\Python\Tanzania\monitoring_services.py", line 41, in <module>
+    cellset = tm1.cubes.cells.execute_mdx(mdx)
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 1879, in execute_mdx
+    cellset_id = self.create_cellset(mdx=mdx, sandbox_name=sandbox_name, **kwargs)
   File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 4346, in create_cellset
     response = self._rest.POST(url=url, data=json.dumps(data, ensure_ascii=False), **kwargs)
   File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 543, in POST
@@ -21,6 +18,4 @@ Traceback (most recent call last):
     raise TM1pyRestException(response.text,
     ...<2 lines>...
                              headers=response.headers)
-TM1py.Exceptions.Exceptions.TM1pyRestException: Text: '{"error":{"code":"501","message":"\"nCount\" : object not found (rte 77)"}}' - Status Code: 400 - Reason: 'Bad Request' - Headers: {'Content-Length': '91', 'Connection': 'keep-alive', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Type': 'application/json; charset=utf-8', 'OData-Version': '4.0'}
-
-[Done] exited with code=1 in 4.835 seconds
+TM1py.Exceptions.Exceptions.TM1pyRestException: Text: '{"error":{"code":"501","message":"Syntax error at or near: '[}ElementAttributes__S-Dummy]\n    ', character position 81"}}' - Status Code: 400 - Reason: 'Bad Request' - Headers: {'Content-Length': '131', 'Connection': 'keep-alive', 'Content-Encoding': 'gzip', 'Cache-Control': 'no-cache', 'Content-Type': 'application/json; charset=utf-8', 'OData-Version': '4.0'}
