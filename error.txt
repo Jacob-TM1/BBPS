@@ -1,53 +1,57 @@
-from TM1py.Services import TM1Service
-
-address='22.88.200.230'
-port=5001
-user='Admin'
-password='admintanzania'
-ssl=False
-
-with TM1Service(address=address, port=port, user=user, password=password, ssl=ssl) as tm1:
-
-    source_dim = "_S-Dummy"
-    target_dim = "HIST-" + source_dim
-
-    # 1. Get attributes from source
-    source_hierarchy = tm1.dimensions.hierarchies.get(source_dim, source_dim)
-    source_attrs = source_hierarchy.element_attributes
-
-    target_hierarchy = tm1.dimensions.hierarchies.get(target_dim, target_dim)
-    target_attrs = [a.name for a in target_hierarchy.element_attributes]
-
-    # 2. Create missing attributes in target
-    for attr in source_attrs:
-        if attr.name not in target_attrs:
-            tm1.dimensions.add_dimension_attribute(target_dim, attr.name, attr.attribute_type)
-
-    # 3. Prepare cubes
-    source_attr_cube = f"}}ElementAttributes_{source_dim}"
-    target_attr_cube = f"}}ElementAttributes_{target_dim}"
-
-    # 4. Get elements
-    source_elements = [e.name for e in source_hierarchy.elements.values()]
-    target_elements = set(e.name for e in target_hierarchy.elements.values())
-
-    # 5. Fetch all attribute values from source cube
-    mdx = fr"""
-    SELECT
-        {{ {','.join([f'[{source_dim}].[{el}]' for el in source_elements])} }} ON ROWS,
-        {{ {','.join([f'[}}ElementAttributes_{source_dim}].[{attr.name}]' for attr in source_attrs])} }} ON COLUMNS
-    FROM [{source_attr_cube}]
-    """
-    cellset = tm1.cubes.cells.execute_mdx(mdx)
-
-    # 6. Write values into target cube
-    for coords, cell in cellset.items():
-        element, attr = coords  # coords = (element, attribute)
-        value = cell["Value"]
-        if element in target_elements and value not in ("", None):
-            tm1.cubes.cells.write_value(
-                value=value,
-                cube_name=target_attr_cube,
-                coordinates=[element, attr]
-            )
-
+{'1', '2'}
+Writing: 2.Desc = Number 2
+[('[_S-Dummy].[_S-Dummy].[2]', '[}ElementAttributes__S-Dummy].[}ElementAttributes__S-Dummy].[Desc]')]
+Traceback (most recent call last):
+  File "c:\Programming\TM1\Python\Tanzania\monitoring_services.py", line 71, in <module>
+    tm1.cubes.cells.write_value(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        value=value,
+        ^^^^^^^^^^^^
+        cube_name=target_attr_cube,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        element_tuple=coords
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 127, in wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 1027, in write_value
+    dimensions = self.get_dimension_names_for_writing(cube_name=cube_name)
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 789, in get_dimension_names_for_writing
+    dimensions = cube_service.get_dimension_names(cube_name, True, **kwargs)
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CubeService.py", line 227, in get_dimension_names
+    response = self._rest.GET(url, **kwargs)
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 508, in GET
+    return self.request(
+           ~~~~~~~~~~~~^
+        method='get',
+        ^^^^^^^^^^^^^
+    ...<7 lines>...
+        encoding=encoding
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 274, in request
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 345, in connect
+    self._start_session(
+    ~~~~~~~~~~~~~~~~~~~^
+        user=self._kwargs.get("user", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+        application_client_id=self._kwargs.get("application_client_id", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        application_client_secret=self._kwargs.get("application_client_secret", None))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 789, in _start_session
+    session_id = self._s.cookies.pop('TM1SessionId', None)
+  File "<frozen _collections_abc>", line 950, in pop
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\requests\cookies.py", line 334, in __getitem__
+    return self._find_no_duplicates(name)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\requests\cookies.py", line 405, in _find_no_duplicates
+    raise CookieConflictError(
+        f"There are multiple cookies with name, {name!r}"
+    )
+requests.cookies.CookieConflictError: There are multiple cookies with name, 'TM1Session
