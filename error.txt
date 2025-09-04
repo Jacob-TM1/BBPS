@@ -1,57 +1,25 @@
-{'1', '2'}
-Writing: 2.Desc = Number 2
-[('[_S-Dummy].[_S-Dummy].[2]', '[}ElementAttributes__S-Dummy].[}ElementAttributes__S-Dummy].[Desc]')]
+[Running] python -u "c:\Programming\TM1\Python\Tanzania\Copy_Dimension_Attributes.py"
+Preparing: 2.Desc = Number 2
+Preparing: 2.Two Digit = 2
+Preparing: 2.Description = Two
+Preparing: 1.Desc = Number 1
+Preparing: 1.Two Digit = 1
+Preparing: 1.Description = One One
+Writing 6 values in batch...
 Traceback (most recent call last):
-  File "c:\Programming\TM1\Python\Tanzania\monitoring_services.py", line 71, in <module>
-    tm1.cubes.cells.write_value(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        value=value,
-        ^^^^^^^^^^^^
+  File "c:\Programming\TM1\Python\Tanzania\Copy_Dimension_Attributes.py", line 81, in <module>
+    tm1.cubes.cells.write_values_through_cellset(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
         cube_name=target_attr_cube,
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        element_tuple=coords
-        ^^^^^^^^^^^^^^^^^^^^
+        cellset=cells_to_write
+        ^^^^^^^^^^^^^^^^^^^^^^
     )
     ^
   File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 127, in wrapper
     return func(self, *args, **kwargs)
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 1027, in write_value
-    dimensions = self.get_dimension_names_for_writing(cube_name=cube_name)
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 789, in get_dimension_names_for_writing
-    dimensions = cube_service.get_dimension_names(cube_name, True, **kwargs)
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CubeService.py", line 227, in get_dimension_names
-    response = self._rest.GET(url, **kwargs)
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 508, in GET
-    return self.request(
-           ~~~~~~~~~~~~^
-        method='get',
-        ^^^^^^^^^^^^^
-    ...<7 lines>...
-        encoding=encoding
-        ^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 274, in request
-    self.connect()
-    ~~~~~~~~~~~~^^
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 345, in connect
-    self._start_session(
-    ~~~~~~~~~~~~~~~~~~~^
-        user=self._kwargs.get("user", None),
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<11 lines>...
-        application_client_id=self._kwargs.get("application_client_id", None),
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        application_client_secret=self._kwargs.get("application_client_secret", None))
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\RestService.py", line 789, in _start_session
-    session_id = self._s.cookies.pop('TM1SessionId', None)
-  File "<frozen _collections_abc>", line 950, in pop
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\requests\cookies.py", line 334, in __getitem__
-    return self._find_no_duplicates(name)
-           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\requests\cookies.py", line 405, in _find_no_duplicates
-    raise CookieConflictError(
-        f"There are multiple cookies with name, {name!r}"
-    )
-requests.cookies.CookieConflictError: There are multiple cookies with name, 'TM1Session
+  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\TM1py\Services\CellService.py", line 101, in wrapper
+    return func(self, *args, **kwargs)
+TypeError: CellService.write_values_through_cellset() missing 2 required positional arguments: 'mdx' and 'values'
+
+[Done] exited with code=1 in 4.325 seconds
