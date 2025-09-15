@@ -1,106 +1,13 @@
-import configparser
-import os
+Cconfig.ini 
+[Publication]
+publication_month=Aug
+month_number=08
+publication_year=2025
+publication_folder=\\corp.dsarena.com\za\group\478100\TM1 Share\BBPS\Publication 
 
-
-folder_structure = [
-    'Development',
-    'Reports',
-    'Reports\Old',
-    'Reports\RJ',
-    'Flatfiles\Old',
-    'Flatfiles\SP',
-    'Flatfiles\RSS',
-    'Dashboards',
-    'Pre Publication',
-    'Tracker',
-    'Dashboards\Live',
-    'Dashboards\Live\\1.National',
-    'Dashboards\Live\\2.Super Regions',
-    'Dashboards\Live\\3.Regional Executives',
-    'Dashboards\Live\\4.Regional Managers',
-    'Dashboards\Live\\5.BMR Outlets',
-    'Dashboards\Live\\6.BBPS Outlets',
-    'Dashboards\Live\\7.TAB',
-    'Dashboards\Live\\Temp',
-    'Dashboards\Published',
-    'Dashboards\Published\\1.National',
-    'Dashboards\Published\\2.Super Regions',
-    'Dashboards\Published\\3.Regional Executives',
-    'Dashboards\Published\\4.Regional Managers',
-    'Dashboards\Published\\6.BBPS Outlets',
-    'Dashboards\Published\\7.TAB',
-]
-
-config = configparser.ConfigParser()
-config.read(".\config.ini")
-
-publication_path = config.get('Publication', 'publication_folder')
-publication_year = config.get('Publication', 'publication_year')
-current_month_folder = publication_year + config.get('Publication', 'month_number') 
-
-filepath = fr'{publication_path}\\{publication_year}\\{current_month_folder}'  
-try:
-    os.makedirs(filepath)
-except:
-    None
-
-for path in folder_structure:
-    try:
-        os.makedirs(f'{filepath}\\{path}')
-    except:
-        print(f'failed: {path}')
-
-print(f'Process Executed for {current_month_folder}')
-
-
-Process Executed for 202508
+error 
 [Running] python -u "c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py"
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:8: SyntaxWarning: invalid escape sequence '\O'
-  'Reports\Old',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:9: SyntaxWarning: invalid escape sequence '\R'
-  'Reports\RJ',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:10: SyntaxWarning: invalid escape sequence '\O'
-  'Flatfiles\Old',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:11: SyntaxWarning: invalid escape sequence '\S'
-  'Flatfiles\SP',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:12: SyntaxWarning: invalid escape sequence '\R'
-  'Flatfiles\RSS',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:16: SyntaxWarning: invalid escape sequence '\L'
-  'Dashboards\Live',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:17: SyntaxWarning: invalid escape sequence '\L'
-  'Dashboards\Live\\1.National',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:18: SyntaxWarning: invalid escape sequence '\L'
-  'Dashboards\Live\\2.Super Regions',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:19: SyntaxWarning: invalid escape sequence '\L'
-  'Dashboards\Live\\3.Regional Executives',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:20: SyntaxWarning: invalid escape sequence '\L'
-  'Dashboards\Live\\4.Regional Managers',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:21: SyntaxWarning: invalid escape sequence '\L'
-  'Dashboards\Live\\5.BMR Outlets',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:22: SyntaxWarning: invalid escape sequence '\L'
-  'Dashboards\Live\\6.BBPS Outlets',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:23: SyntaxWarning: invalid escape sequence '\L'
-  'Dashboards\Live\\7.TAB',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:24: SyntaxWarning: invalid escape sequence '\L'
-  'Dashboards\Live\\Temp',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:25: SyntaxWarning: invalid escape sequence '\P'
-  'Dashboards\Published',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:26: SyntaxWarning: invalid escape sequence '\P'
-  'Dashboards\Published\\1.National',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:27: SyntaxWarning: invalid escape sequence '\P'
-  'Dashboards\Published\\2.Super Regions',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:28: SyntaxWarning: invalid escape sequence '\P'
-  'Dashboards\Published\\3.Regional Executives',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:29: SyntaxWarning: invalid escape sequence '\P'
-  'Dashboards\Published\\4.Regional Managers',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:30: SyntaxWarning: invalid escape sequence '\P'
-  'Dashboards\Published\\6.BBPS Outlets',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:31: SyntaxWarning: invalid escape sequence '\P'
-  'Dashboards\Published\\7.TAB',
-c:\Programming\TM1\Python\BBPS\1.Pre Publication\bbps_folder_structure.py:35: SyntaxWarning: invalid escape sequence '\c'
-  config.read(".\config.ini")
 failed: Development
-failed: Reports
 failed: Reports\Old
 failed: Reports\RJ
 failed: Flatfiles\Old
@@ -127,4 +34,59 @@ failed: Dashboards\Published\6.BBPS Outlets
 failed: Dashboards\Published\7.TAB
 Process Executed for 202508
 
-[Done] exited with code=0 in 1.095 seconds
+[Done] exited with code=0 in 0.975 seconds
+
+code 
+import configparser
+import os
+
+
+folder_structure = [
+    'Development',
+    r'Reports\Old',
+    r'Reports\RJ',
+    r'Flatfiles\Old',
+    r'Flatfiles\SP',
+    r'Flatfiles\RSS',
+    'Dashboards',
+    'Pre Publication',
+    'Tracker',
+    r'Dashboards\Live',
+    r'Dashboards\Live\1.National',
+    r'Dashboards\Live\2.Super Regions',
+    r'Dashboards\Live\3.Regional Executives',
+    r'Dashboards\Live\4.Regional Managers',
+    r'Dashboards\Live\5.BMR Outlets',
+    r'Dashboards\Live\6.BBPS Outlets',
+    r'Dashboards\Live\7.TAB',
+    r'Dashboards\Live\Temp',
+    r'Dashboards\Published',
+    r'Dashboards\Published\1.National',
+    r'Dashboards\Published\2.Super Regions',
+    r'Dashboards\Published\3.Regional Executives',
+    r'Dashboards\Published\4.Regional Managers',
+    r'Dashboards\Published\6.BBPS Outlets',
+    r'Dashboards\Published\7.TAB',
+]
+
+config = configparser.ConfigParser()
+config.read(r".\config.ini")
+
+publication_path = config.get('Publication', 'publication_folder')
+publication_year = config.get('Publication', 'publication_year')
+current_month_folder = publication_year + config.get('Publication', 'month_number') 
+
+filepath = fr'{publication_path}\\{publication_year}\\{current_month_folder}'  
+try:
+    os.makedirs(filepath)
+except:
+    None
+
+for path in folder_structure:
+    try:
+        os.makedirs(f'{filepath}\\{path}')
+    except:
+        print(f'failed: {path}')
+        
+
+print(f'Process Executed for {current_month_folder}')
