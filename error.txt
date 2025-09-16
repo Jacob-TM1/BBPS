@@ -1,111 +1,30 @@
-"""
-This process generates copies of the 'BBPS-Outlet_YYYYMM.xlsm'  which is found in the ...Dashboards\Live folder of the current months publication. Make sure that the 'YYYYMM' is for the current year and month. 
-
-"""
-from calendar import month
-import win32com.client as win32
-import shutil
-from TM1py.Services import TM1Service
-from TM1py.Objects import Subset
-import configparser
-import time
-import concurrent.futures 
-from tqdm import tqdm
-import os 
-
-start = time.time()
-# == VARIABLES 
-config = configparser.ConfigParser()
-config.read(".\config.ini")
-publication_path = config.get('Publication', 'publication_folder')
-publication_year = config.get('Publication', 'publication_year')
-month_number =  config.get('Publication', 'month_number')
-current_month_folder = publication_year + month_number 
-
-def produce_dashboards(element, source, destination):
-    element2 = element.replace('!', '/')
-    shutil.copy(source, destination)
-
-    # -- Change Cell Value in Excel Dashboard
-    workbook = excel.Workbooks.Open(destination)
-   
-    sheet = workbook.Worksheets("Master")
-    cells = sheet.Cells
-    cells(21,'R').Value = element2
-
-    #excel.CalculateUntilAsyncQueriesDone()
-    workbook.Close(True)
-    
-def convert_to_preferred_format(sec):
-   sec = sec % (24 * 3600)
-   hour = sec // 3600
-   sec %= 3600
-   min = sec // 60
-   sec %= 60
-   return "%02d:%02d:%02d" % (hour, min, sec) 
-
-    # --Excel
-excel = win32.Dispatch("Excel.Application")
-#excel.Visible = False
-excel.ScreenUpdating = False
-excel.DisplayAlerts = False
-excel.EnableEvents = False
-
-    # --TM1 Login
-server_name = 'ABSA Bank'
-dimension_name = 'BBPS-Site'
-
-dashboards_and_subsets = {
-    "BBPS-Super Region" : ("MD.Super Regions", "2.Super Regions"),
-    "BBPS-Provincial Executive" : ("MD.Regional Executives","3.Provincial Executives"),
-    "BBPS-Regional Managers" : ("MD.Regional Managers","4.Regional Managers"),
-    #"BBPS-Outlet" : ("ActiveSites","6.BBPS Outlets"), 
-    #"BBPS-Outlet" : ("Temp","Temp"), 
-}
-
-with TM1Service(**config['BBPS_Development']) as tm1_dev:
-    print(f'{server_name}: Development server logged in successfully')
-
-    
-    # -- Get all elements in Subset and then create a list of elements in that subset
-    for dashboard, subset in dashboards_and_subsets.items():
-        all_elements_in_subset = tm1_dev.dimensions.subsets.get_element_names(dimension_name=dimension_name, hierarchy_name=dimension_name, subset_name=subset[0])
-        all_elements_branch_name_attribute = tm1_dev.elements.get_attribute_of_elements(dimension_name, dimension_name, 'BranchName', all_elements_in_subset, False)
-        print(dashboard, ': ',len(all_elements_branch_name_attribute))
-        
-        for element, attribute in tqdm(all_elements_branch_name_attribute.items()):
-            attribute = attribute.replace('/','!')
-            source = fr'C:\Programming\TM1\Dashboards\Live\BBPS-Outlet_{publication_year}{month_number}.xlsm'
-            #source = f'{publication_path}\{publication_year}\{current_month_folder}\Dashboards\Live\BBPS-Outlet_{publication_year}{month_number}.xlsm'
-
-            #destination = f'{publication_path}\{publication_year}\{current_month_folder}\Dashboards\Live\{subset[1]}\{dashboard}_{publication_year}{month_number}_{attribute}.xlsm'
-            destination = fr'C:\Programming\TM1\Dashboards\Live\{subset[1]}\{dashboard}_{publication_year}{month_number}_{attribute}.xlsm'
-            #if(attribute == True): # Replace "True" with name of site to produce only one site
-            if os.path.exists(destination):
-                print(f"File already exists, skipping: {destination}")
-                continue
-            try:
-                produce_dashboards(attribute, source, destination)
-            except AttributeError:
-                continue
- 
-end = time.time()
-print("Completed in: ", convert_to_preferred_format(end-start))
-#==========================
-
-
-
-
-[Running] python -u "c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards_locally.py"
-c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards_locally.py:1: SyntaxWarning: invalid escape sequence '\L'
+[Running] python -u "c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards_local.py"
+c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards_local.py:1: SyntaxWarning: invalid escape sequence '\L'
   """
-Traceback (most recent call last):
-  File "c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards_locally.py", line 50, in <module>
-    excel.ScreenUpdating = False
-    ^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\AB021Y5\AppData\Roaming\Python\Python313\site-packages\win32com\client\dynamic.py", line 677, in __setattr__
-    self._oleobj_.Invoke(entry.dispid, 0, invoke_type, 0, value)
-    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-pywintypes.com_error: (-2146777998, 'OLE error 0x800ac472', None, None)
+ABSA Bank: Development server logged in successfully
+Processing BBPS-Super Region...
+BBPS-Super Region: 7 elements
 
-[Done] exited with code=1 in 3.302 seconds
+  0%|          | 0/7 [00:00<?, ?it/s]Excel error for CEN SR002-Central: (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2146777998), None)
+Excel error for EC SR001-Eastern Cape: (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2146777998), None)
+Excel error for GN & L SR003-GN & L: (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2146777998), None)
+Excel error for GS SR004-Gauteng South: (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2146777998), None)
+
+ 57%|#####7    | 4/7 [00:00<00:00, 37.37it/s]Excel error for KZN SR005-KwaZulu-Natal: (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2146777998), None)
+Excel error for MP SR007-Mpumalanga: (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2146777998), None)
+Excel error for WC SR006-Western Cape: (-2147352567, 'Exception occurred.', (0, None, None, None, 0, -2146777998), None)
+
+100%|##########| 7/7 [00:00<00:00, 47.71it/s]
+Processing BBPS-Provincial Executive...
+BBPS-Provincial Executive: 10 elements
+
+  0%|          | 0/10 [00:00<?, ?it/s]
+100%|##########| 10/10 [00:00<00:00, 6650.24it/s]
+Processing BBPS-Regional Managers...
+BBPS-Regional Managers: 28 elements
+
+  0%|          | 0/28 [00:00<?, ?it/s]
+100%|##########| 28/28 [00:00<00:00, 15325.66it/s]
+Completed in:  00:00:00
+
+[Done] exited with code=0 in 3.663 seconds
