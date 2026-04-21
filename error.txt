@@ -1,306 +1,42 @@
-[Running] python -u "c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards.py"
-c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards.py:23: SyntaxWarning: invalid escape sequence '\c'
-  config.read(".\config.ini")
-ABSA Bank: logged in
-BBPS-Super Region: 7 items
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_CEN SR002-Central.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_EC SR001-Eastern Cape.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_GN & L SR003-GN & L.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_GS SR004-Gauteng South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_KZN SR005-KwaZulu-Natal.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_MP SR007-Mpumalanga.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_WC SR006-Western Cape.xlsm
-BBPS-Provincial Executive: 10 items
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_FS RE002-Free State.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_NC RE009-Northern Cape.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_NW RE008-North West.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_EC RE001-Eastern Cape.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_GN RE003-Gauteng North.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_L RE006-Limpopo.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_GS RE004-Gauteng South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_KZN RE005-KwaZulu-Natal.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_MP RE007-Mpumalanga.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_WC RE010-Western Cape.xlsm
-BBPS-Regional Managers: 28 items
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_FS 1-Roses.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_FS 2-Golden Fields.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_NC 1-Kalahari Diamonds.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_NW 1-Platinum.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_NW 2-Gold.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_Coverage.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 1-Sunshine Coast and Border-Kei.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 2-Great Kei.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 3-Nelson Mandela Kouga Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 4-Southern Cape Karoo Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GN 1-Tshwane Central.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GN 2-Tshwane North.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GN 3-Tshwane South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_LM 1-Capricorn Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_LM 2-Vhembe Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 1-City Centre ! Eastgate.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 2-Sandton ! Westrand.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 3-Eastrand.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 4-Soweto ! Vaal.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_KZN 1-Pine City.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_KZN 2-South Burg.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_KZN 3-Zululand Ridge.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_MP 1-Lowveld.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_MP 2-Highveld.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 1-Atlantic North.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 2-Overstrand.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 3-Atlantic South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 4-Winelands! West Coast.xlsm
-BBPS-Outlet: 561 items
+Generating dashboards:  90%|########9 | 246/274 [10:26<01:24,  3.02s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8877-Menlyn Maine.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8881-Vredenburg.xlsm � (-2147418111, 'Call was rejected by callee.', None, None)
 
-Total dashboards to generate: 561
+Generating dashboards:  91%|######### | 248/274 [10:48<02:19,  5.36s/it]
+Generating dashboards:  91%|######### | 249/274 [10:50<01:58,  4.73s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8887-Davenport.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
 
-Generating dashboards:   0%|          | 0/561 [00:00<?, ?it/s]c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards.py:23: SyntaxWarning: invalid escape sequence '\c'
-  config.read(".\config.ini")
-c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards.py:23: SyntaxWarning: invalid escape sequence '\c'
-  config.read(".\config.ini")
-c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards.py:23: SyntaxWarning: invalid escape sequence '\c'
-  config.read(".\config.ini")
-c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards.py:23: SyntaxWarning: invalid escape sequence '\c'
-  config.read(".\config.ini")
-ABSA Bank: logged in
-BBPS-Super Region: 7 items
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_CEN SR002-Central.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_EC SR001-Eastern Cape.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_GN & L SR003-GN & L.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_GS SR004-Gauteng South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_KZN SR005-KwaZulu-Natal.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_MP SR007-Mpumalanga.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_WC SR006-Western Cape.xlsm
-BBPS-Provincial Executive: 10 items
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_FS RE002-Free State.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_NC RE009-Northern Cape.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_NW RE008-North West.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_EC RE001-Eastern Cape.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_GN RE003-Gauteng North.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_L RE006-Limpopo.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_GS RE004-Gauteng South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_KZN RE005-KwaZulu-Natal.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_MP RE007-Mpumalanga.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_WC RE010-Western Cape.xlsm
-BBPS-Regional Managers: 28 items
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_FS 1-Roses.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_FS 2-Golden Fields.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_NC 1-Kalahari Diamonds.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_NW 1-Platinum.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_NW 2-Gold.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_Coverage.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 1-Sunshine Coast and Border-Kei.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 2-Great Kei.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 3-Nelson Mandela Kouga Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 4-Southern Cape Karoo Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GN 1-Tshwane Central.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GN 2-Tshwane North.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GN 3-Tshwane South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_LM 1-Capricorn Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_LM 2-Vhembe Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 1-City Centre ! Eastgate.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 2-Sandton ! Westrand.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 3-Eastrand.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 4-Soweto ! Vaal.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_KZN 1-Pine City.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_KZN 2-South Burg.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_KZN 3-Zululand Ridge.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_MP 1-Lowveld.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_MP 2-Highveld.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 1-Atlantic North.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 2-Overstrand.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 3-Atlantic South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 4-Winelands! West Coast.xlsm
-BBPS-Outlet: 561 items
+Generating dashboards:  91%|#########1| 250/274 [10:50<01:32,  3.84s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8895-Rosslyn.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8896-Malvern.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8901-Knysna.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8904-City Centre Kimberley.xlsm � (-2147418111, 'Call was rejected by callee.', None, None)
 
-Total dashboards to generate: 561
-ABSA Bank: logged in
-BBPS-Super Region: 7 items
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_CEN SR002-Central.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_EC SR001-Eastern Cape.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_GN & L SR003-GN & L.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_GS SR004-Gauteng South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_KZN SR005-KwaZulu-Natal.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_MP SR007-Mpumalanga.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\2.Super Regions\BBPS-Super Region_202603_WC SR006-Western Cape.xlsm
-BBPS-Provincial Executive: 10 items
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_FS RE002-Free State.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_NC RE009-Northern Cape.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_NW RE008-North West.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_EC RE001-Eastern Cape.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_GN RE003-Gauteng North.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_L RE006-Limpopo.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_GS RE004-Gauteng South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_KZN RE005-KwaZulu-Natal.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_MP RE007-Mpumalanga.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\3.Provincial Executives\BBPS-Provincial Executive_202603_WC RE010-Western Cape.xlsm
-BBPS-Regional Managers: 28 items
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_FS 1-Roses.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_FS 2-Golden Fields.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_NC 1-Kalahari Diamonds.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_NW 1-Platinum.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_NW 2-Gold.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_Coverage.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 1-Sunshine Coast and Border-Kei.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 2-Great Kei.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 3-Nelson Mandela Kouga Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_EC 4-Southern Cape Karoo Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GN 1-Tshwane Central.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GN 2-Tshwane North.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GN 3-Tshwane South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_LM 1-Capricorn Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_LM 2-Vhembe Region.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 1-City Centre ! Eastgate.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 2-Sandton ! Westrand.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 3-Eastrand.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_GS 4-Soweto ! Vaal.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_KZN 1-Pine City.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_KZN 2-South Burg.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_KZN 3-Zululand Ridge.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_MP 1-Lowveld.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_MP 2-Highveld.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 1-Atlantic North.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 2-Overstrand.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 3-Atlantic South.xlsm
-Skipping (exists): C:\Programming\TM1\Dashboards\Live\4.Regional Managers\BBPS-Regional Managers_202603_WC 4-Winelands! West Coast.xlsm
-BBPS-Outlet: 561 items
+Generating dashboards:  93%|#########2| 254/274 [11:15<01:41,  5.10s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8913-Hartbeespoort.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
 
-Total dashboards to generate: 561
-Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=21440, pipe_handle=1036)
-                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 122, in spawn_main
-    exitcode = _main(fd, parent_sentinel)
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 131, in _main
-    prepare(preparation_data)
-    ~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 246, in prepare
-    _fixup_main_from_path(data['init_main_from_path'])
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 297, in _fixup_main_from_path
-    main_content = runpy.run_path(main_path,
-                                  run_name="__mp_main__")
-  File "<frozen runpy>", line 287, in run_path
-  File "<frozen runpy>", line 98, in _run_module_code
-  File "<frozen runpy>", line 88, in _run_code
-  File "c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards.py", line 128, in <module>
-    futures = {pool.submit(produce_dashboard, task): task for task in all_tasks}
-               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python313\Lib\concurrent\futures\process.py", line 803, in submit
-    self._adjust_process_count()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Program Files\Python313\Lib\concurrent\futures\process.py", line 762, in _adjust_process_count
-    self._spawn_process()
-    ~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Program Files\Python313\Lib\concurrent\futures\process.py", line 780, in _spawn_process
-    p.start()
-    ~~~~~~~^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ~~~~~~~~~~~^^^^^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\context.py", line 337, in _Popen
-    return Popen(process_obj)
-  File "C:\Program Files\Python313\Lib\multiprocessing\popen_spawn_win32.py", line 47, in __init__
-    prep_data = spawn.get_preparation_data(process_obj._name)
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 164, in get_preparation_data
-    _check_not_importing_main()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 140, in _check_not_importing_main
-    raise RuntimeError('''
-    ...<16 lines>...
-    ''')
-RuntimeError: 
-        An attempt has been made to start a new process before the
-        current process has finished its bootstrapping phase.
+Generating dashboards:  93%|#########3| 255/274 [11:16<01:25,  4.51s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8920-Midrand.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
 
-        This probably means that you are not using fork to start your
-        child processes and you have forgotten to use the proper idiom
-        in the main module:
+Generating dashboards:  94%|#########3| 257/274 [11:17<00:52,  3.11s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8923-Vredendal.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
 
-            if __name__ == '__main__':
-                freeze_support()
-                ...
+Generating dashboards:  94%|#########4| 258/274 [11:18<00:44,  2.78s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8924-Umhlanga Ridge.xlsm � <unknown>.Open
 
-        The "freeze_support()" line can be omitted if the program
-        is not going to be frozen to produce an executable.
+Generating dashboards:  95%|#########4| 260/274 [11:42<01:23,  5.97s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8938-Montague Gardens.xlsm � (-2147418111, 'Call was rejected by callee.', None, None)
 
-        To fix this issue, refer to the "Safe importing of main module"
-        section in https://docs.python.org/3/library/multiprocessing.html
-        
-Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=21440, pipe_handle=924)
-                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 122, in spawn_main
-    exitcode = _main(fd, parent_sentinel)
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 131, in _main
-    prepare(preparation_data)
-    ~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 246, in prepare
-    _fixup_main_from_path(data['init_main_from_path'])
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 297, in _fixup_main_from_path
-    main_content = runpy.run_path(main_path,
-                                  run_name="__mp_main__")
-  File "<frozen runpy>", line 287, in run_path
-  File "<frozen runpy>", line 98, in _run_module_code
-  File "<frozen runpy>", line 88, in _run_code
-  File "c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards.py", line 128, in <module>
-    futures = {pool.submit(produce_dashboard, task): task for task in all_tasks}
-               ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python313\Lib\concurrent\futures\process.py", line 803, in submit
-    self._adjust_process_count()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Program Files\Python313\Lib\concurrent\futures\process.py", line 762, in _adjust_process_count
-    self._spawn_process()
-    ~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Program Files\Python313\Lib\concurrent\futures\process.py", line 780, in _spawn_process
-    p.start()
-    ~~~~~~~^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ~~~~~~~~~~~^^^^^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\context.py", line 337, in _Popen
-    return Popen(process_obj)
-  File "C:\Program Files\Python313\Lib\multiprocessing\popen_spawn_win32.py", line 47, in __init__
-    prep_data = spawn.get_preparation_data(process_obj._name)
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 164, in get_preparation_data
-    _check_not_importing_main()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Program Files\Python313\Lib\multiprocessing\spawn.py", line 140, in _check_not_importing_main
-    raise RuntimeError('''
-    ...<16 lines>...
-    ''')
-RuntimeError: 
-        An attempt has been made to start a new process before the
-        current process has finished its bootstrapping phase.
+Generating dashboards:  96%|#########5| 262/274 [11:43<00:50,  4.23s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8935-Port Alfred.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8950-Waverley.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8975-Killarney.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
 
-        This probably means that you are not using fork to start your
-        child processes and you have forgotten to use the proper idiom
-        in the main module:
+Generating dashboards:  97%|#########6| 265/274 [12:05<00:49,  5.51s/it]
+Generating dashboards:  97%|#########7| 266/274 [12:07<00:38,  4.85s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8988-Northgate.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8992-Greenacres.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8995-Monument Park.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
 
-            if __name__ == '__main__':
-                freeze_support()
-                ...
+Generating dashboards:  98%|#########8| 269/274 [12:07<00:14,  2.89s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8991-Kenilworth.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8976-The Glen.xlsm � (-2147418111, 'Call was rejected by callee.', None, None)
 
-        The "freeze_support()" line can be omitted if the program
-        is not going to be frozen to produce an executable.
+Generating dashboards:  99%|#########8| 270/274 [12:09<00:10,  2.72s/it]
+Generating dashboards:  99%|#########8| 271/274 [12:10<00:07,  2.45s/it]
+Generating dashboards:  99%|#########9| 272/274 [12:20<00:07,  3.92s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_9900-Moratiwa Crossing.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8997-Taung.xlsm � Open.Worksheets
 
-        To fix this issue, refer to the "Safe importing of main module"
-        section in https://docs.python.org/3/library/multiprocessing.html
-        
-
-Generating dashboards:   0%|          | 0/561 [00:09<?, ?it/s]
-Traceback (most recent call last):
-  File "c:\Programming\TM1\Python\BBPS\4.Dashboards\bbps_generate_dashboards.py", line 132, in <module>
-    result = future.result()
-  File "C:\Program Files\Python313\Lib\concurrent\futures\_base.py", line 449, in result
-    return self.__get_result()
-           ~~~~~~~~~~~~~~~~~^^
-  File "C:\Program Files\Python313\Lib\concurrent\futures\_base.py", line 401, in __get_result
-    raise self._exception
-concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
-
-[Done] exited with code=1 in 15.398 seconds
-
+Generating dashboards: 100%|#########9| 273/274 [12:20<00:03,  3.09s/it]
+Generating dashboards: 100%|##########| 274/274 [12:42<00:00,  7.75s/it]
+Generating dashboards: 100%|##########| 274/274 [12:42<00:00,  2.78s/it]
+Completed in: 00:12:44
