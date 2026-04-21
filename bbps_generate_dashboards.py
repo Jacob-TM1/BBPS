@@ -12,6 +12,8 @@ import time
 import concurrent.futures 
 from tqdm import tqdm
 import os 
+import warnings
+warnings.filterwarnings('ignore')
 
 start = time.time()
 # == VARIABLES 
@@ -46,7 +48,7 @@ def convert_to_preferred_format(sec):
 
     # --Excel
 excel = win32.Dispatch("Excel.Application")
-#excel.Visible = False
+# excel.Visible = False
 excel.ScreenUpdating = False
 excel.DisplayAlerts = False
 excel.EnableEvents = False
@@ -57,10 +59,10 @@ dimension_name = 'BBPS-Site'
 
 dashboards_and_subsets = {
     "BBPS-Super Region" : ("MD.Super Regions", "2.Super Regions"),
-    # "BBPS-Regional Executive" : ("MD.Regional Executives","3.Regional Executives"),
-    # "BBPS-Regional Managers" : ("MD.Regional Managers","4.Regional Managers"),
-    # "BBPS-Outlet" : ("ActiveSites","6.BBPS Outlets"), 
-    #  "BBPS-Outlet" : ("Temp","Temp"), 
+    "BBPS-Provincial Executive" : ("MD.Regional Executives","3.Provincial Executives"),
+    "BBPS-Regional Managers" : ("MD.Regional Managers","4.Regional Managers"),
+    "BBPS-Outlet" : ("ActiveSites","6.BBPS Outlets"), 
+    # "BBPS-Outlet" : ("Subset 1","Temp"), 
 }
 
 with TM1Service(**config['BBPS_Development']) as tm1_dev:
@@ -75,8 +77,11 @@ with TM1Service(**config['BBPS_Development']) as tm1_dev:
         
         for element, attribute in tqdm(all_elements_branch_name_attribute.items()):
             attribute = attribute.replace('/','!')
-            source = f'{publication_path}\{publication_year}\{current_month_folder}\Dashboards\Live\BBPS-Outlet_{publication_year}{month_number}.xlsm'
-            destination = f'{publication_path}\{publication_year}\{current_month_folder}\Dashboards\Live\{subset[1]}\{dashboard}_{publication_year}{month_number}_{attribute}.xlsm'
+            source = fr'C:\Programming\TM1\Dashboards\Live\BBPS-Outlet_{publication_year}{month_number}.xlsm'
+            #source = f'{publication_path}\{publication_year}\{current_month_folder}\Dashboards\Live\BBPS-Outlet_{publication_year}{month_number}.xlsm'
+
+            #destination = f'{publication_path}\{publication_year}\{current_month_folder}\Dashboards\Live\{subset[1]}\{dashboard}_{publication_year}{month_number}_{attribute}.xlsm'
+            destination = fr'C:\Programming\TM1\Dashboards\Live\{subset[1]}\{dashboard}_{publication_year}{month_number}_{attribute}.xlsm'
             #if(attribute == True): # Replace "True" with name of site to produce only one site
             if os.path.exists(destination):
                 print(f"File already exists, skipping: {destination}")
