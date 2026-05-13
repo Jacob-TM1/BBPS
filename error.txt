@@ -1,42 +1,91 @@
-Generating dashboards:  90%|########9 | 246/274 [10:26<01:24,  3.02s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8877-Menlyn Maine.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
-ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8881-Vredenburg.xlsm � (-2147418111, 'Call was rejected by callee.', None, None)
 
-Generating dashboards:  91%|######### | 248/274 [10:48<02:19,  5.36s/it]
-Generating dashboards:  91%|######### | 249/274 [10:50<01:58,  4.73s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8887-Davenport.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+from TM1py import TM1Service
+import configparser
+import json, os
 
-Generating dashboards:  91%|#########1| 250/274 [10:50<01:32,  3.84s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8895-Rosslyn.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
-ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8896-Malvern.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
-ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8901-Knysna.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
-ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8904-City Centre Kimberley.xlsm � (-2147418111, 'Call was rejected by callee.', None, None)
+config = configparser.ConfigParser()
+config.read(r".\config.ini")   # <-- also fixed the SyntaxWarning (raw string)
+publication_path     = config.get('Publication', 'publication_folder')
+publication_year     = config.get('Publication', 'publication_year')
+month_number         = config.get('Publication', 'month_number')
+current_month_folder = publication_year + month_number
 
-Generating dashboards:  93%|#########2| 254/274 [11:15<01:41,  5.10s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8913-Hartbeespoort.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+server_name    = 'ABSA Bank'
 
-Generating dashboards:  93%|#########3| 255/274 [11:16<01:25,  4.51s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8920-Midrand.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+EXCLUDE_PREFIXES = (
+    '}Stats', '}Clients', '}Groups', '}ClientGroups',
+    '}ClientProperties', '}Capabilities', '}CapabilityAssignments',
+    '}ElementAttributes_}',
+)
 
-Generating dashboards:  94%|#########3| 257/274 [11:17<00:52,  3.11s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8923-Vredendal.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+with TM1Service(**config['BBPS_Development']) as tm1_dev:
+    print(f'{server_name}: logged in')
 
-Generating dashboards:  94%|#########4| 258/274 [11:18<00:44,  2.78s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8924-Umhlanga Ridge.xlsm � <unknown>.Open
+    backup_location ='Update Production/model'
+    os.makedirs('Update Production/model/dimensions', exist_ok=True)
+    os.makedirs('Update Production/model/cubes', exist_ok=True)
+    os.makedirs('Update Production/model/rules', exist_ok=True)
+    os.makedirs('Update Production/model/processes', exist_ok=True)
 
-Generating dashboards:  95%|#########4| 260/274 [11:42<01:23,  5.97s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8938-Montague Gardens.xlsm � (-2147418111, 'Call was rejected by callee.', None, None)
+    # Dimensions
+    for dim_name in tm1_dev.dimensions.get_all_names():
+        dim = tm1_dev.dimensions.get(dim_name)
+        with open(f'Update Production/model/dimensions/{dim_name}.json', 'w') as f:
+            json.dump(json.loads(dim.body), f, indent=2)
 
-Generating dashboards:  96%|#########5| 262/274 [11:43<00:50,  4.23s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8935-Port Alfred.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
-ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8950-Waverley.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
-ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8975-Killarney.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+    # Cubes
+    for cube_name in tm1_dev.cubes.get_all_names():
+        cube = tm1_dev.cubes.get(cube_name)
+        with open(f'Update Production/model/cubes/{cube_name}.json', 'w') as f:
+            json.dump(json.loads(cube.body), f, indent=2)
 
-Generating dashboards:  97%|#########6| 265/274 [12:05<00:49,  5.51s/it]
-Generating dashboards:  97%|#########7| 266/274 [12:07<00:38,  4.85s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8988-Northgate.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
-ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8992-Greenacres.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
-ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8995-Monument Park.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
+    # Processes
+    for process_name in tm1_dev.processes.get_all_names():
+        process = tm1_dev.processes.get(process_name)
+        with open(f'Update Production/model/processes/{process_name}.json', 'w') as f:
+            json.dump(json.loads(process.body), f, indent=2)
+    
+    # --- Chores 
+    os.makedirs('Update Production/model/chores', exist_ok=True)
+    for chore_name in tm1_dev.chores.get_all_names():
+        chore = tm1_dev.chores.get(chore_name)
+        with open(f'Update Production/model/chores/{chore_name}.json', 'w') as f:
+            f.write(chore.body)
+    
+    # --- Public Subsets (skip private — those belong to users) ---
+    for dim_name in tm1_dev.dimensions.get_all_names():
+        if any(dim_name.startswith(p) for p in EXCLUDE_PREFIXES):
+            continue
+        os.makedirs(f'Update Production/model/subsets/{dim_name}', exist_ok=True)
+        subset_names = tm1_dev.subsets.get_all_names(
+            dimension_name=dim_name,
+            hierarchy_name=dim_name,
+            private=False                    # ◄ public only
+        )
+        for subset_name in subset_names:
+            subset = tm1_dev.subsets.get(
+                subset_name=subset_name,
+                dimension_name=dim_name,
+                hierarchy_name=dim_name,
+                private=False
+            )
+            with open(f'Update Production/model/subsets/{dim_name}/{subset_name}.json', 'w') as f:
+                f.write(subset.body)
 
-Generating dashboards:  98%|#########8| 269/274 [12:07<00:14,  2.89s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8991-Kenilworth.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
-ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8976-The Glen.xlsm � (-2147418111, 'Call was rejected by callee.', None, None)
-
-Generating dashboards:  99%|#########8| 270/274 [12:09<00:10,  2.72s/it]
-Generating dashboards:  99%|#########8| 271/274 [12:10<00:07,  2.45s/it]
-Generating dashboards:  99%|#########9| 272/274 [12:20<00:07,  3.92s/it]ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_9900-Moratiwa Crossing.xlsm � (-2146777998, 'OLE error 0x800ac472', None, None)
-ERROR: C:\Programming\TM1\Dashboards\Live\6.BBPS Outlets\BBPS-Outlet_202603_8997-Taung.xlsm � Open.Worksheets
-
-Generating dashboards: 100%|#########9| 273/274 [12:20<00:03,  3.09s/it]
-Generating dashboards: 100%|##########| 274/274 [12:42<00:00,  7.75s/it]
-Generating dashboards: 100%|##########| 274/274 [12:42<00:00,  2.78s/it]
-Completed in: 00:12:44
+    # --- Public Views (skip private — those belong to users) ---
+    for cube_name in tm1_dev.cubes.get_all_names():
+        if any(cube_name.startswith(p) for p in EXCLUDE_PREFIXES):
+            continue
+        os.makedirs(f'Update Production/model/views/{cube_name}', exist_ok=True)
+        view_names = tm1_dev.views.get_all_names(
+            cube_name=cube_name,
+            private=False                    # ◄ public only
+        )
+        for view_name in view_names:
+            view = tm1_dev.views.get(
+                view_name=view_name,
+                cube_name=cube_name,
+                private=False
+            )
+            with open(f'Update Production/model/views/{cube_name}/{view_name}.json', 'w') as f:
+                f.write(view.body)
