@@ -1,12 +1,189 @@
-Export complete. Files written to: Update Production/model
-Reinitialized existing Git repository in C:/Programming/TM1/Python/BBPS/Update Production/.git/
-On branch master
-nothing to commit, working tree clean
-Traceback (most recent call last):
-  File "c:\Programming\TM1\Python\BBPS\5.Update Production\export_model.py", line 176, in <module>
+import configparser
+import json
+import os
+import shutil
+import subprocess
+from datetime import datetime
+
+from TM1py import TM1Service
+
+# =============================================================================
+# CONFIG
+# =============================================================================
+config = configparser.ConfigParser()
+config.read(r".\config.ini")
+
+# Root folder where all exported model files will be written.
+# Change this one variable to move the entire export location.
+base_location = '5.Update Production/model'
+
+# GitHub repository URL.
+repo_url = 'https://github.com/Jacob-TM1/BBPS-Update.git'
+
+# TM1 system objects to exclude from all exports.
+# These cover stats, security, authentication and client management objects.
+# Note: "}ElementAttributes_}" targets only attributes of system dims,
+# leaving normal element attribute cubes (e.g. }ElementAttributes_Account) intact.
+EXCLUDE_PREFIXES = (
+    '}Stats',
+    '}Clients',
+    '}Groups',
+    '}ClientGroups',
+    '}ClientProperties',
+    '}Capabilities',
+    '}CapabilityAssignments',
+    '}ElementAttributes_}',
+)
+
+# =============================================================================
+# CLEAN EXPORT LOCATION
+# Wipe the existing model folder so no stale or deleted objects carry over.
+# =============================================================================
+if os.path.exists(base_location):
+    shutil.rmtree(base_location)
+    print(f'Cleared old export at: {base_location}')
+
+# Create top-level subfolders upfront.
+# Subsets and views need dynamic subfolders (created per dim/cube below).
+for folder in ['dimensions', 'cubes', 'rules', 'processes', 'chores', 'subsets', 'views']:
+    os.makedirs(f'{base_location}/{folder}', exist_ok=True)
+
+# =============================================================================
+# EXPORT
+# =============================================================================
+with TM1Service(**config['BBPS_Development']) as tm1:
+    print('Connected to Dev server.')
+
+    # -------------------------------------------------------------------------
+    # Dimensions
+    # Exports dimension structure and hierarchies.
+    # System dimensions (prefixed with }) are excluded.
+    # -------------------------------------------------------------------------
+    print('\tExporting dimensions...')
+    for dim_name in tm1.dimensions.get_all_names():
+        if any(dim_name.startswith(p) for p in EXCLUDE_PREFIXES):
+            continue
+        dim = tm1.dimensions.get(dim_name)
+        with open(f'{base_location}/dimensions/{dim_name}.json', 'w') as f:
+            json.dump(json.loads(dim.body), f, indent=2)
+
+    # -------------------------------------------------------------------------
+    # Cubes + Rules
+    # Exports cube structure and rules together in a single pass.
+    # Rules are only written if the cube actually has them.
+    # System cubes are excluded.
+    # -------------------------------------------------------------------------
+    print('\tExporting cubes and rules...')
+    for cube_name in tm1.cubes.get_all_names():
+        if any(cube_name.startswith(p) for p in EXCLUDE_PREFIXES):
+            continue
+        cube = tm1.cubes.get(cube_name)
+
+        # Cube structure
+        with open(f'{base_location}/cubes/{cube_name}.json', 'w') as f:
+            json.dump(json.loads(cube.body), f, indent=2)
+
+        # Rules — only export if the cube has them
+        if cube.rules and cube.rules.text:
+            with open(f'{base_location}/rules/{cube_name}.rux', 'w') as f:
+                f.write(cube.rules.text)
+
+    # -------------------------------------------------------------------------
+    # Processes (TI)
+    # Exports all TurboIntegrator processes.
+    # -------------------------------------------------------------------------
+    print('\tExporting processes...')
+    for process_name in tm1.processes.get_all_names():
+        if any(process_name.startswith(p) for p in EXCLUDE_PREFIXES):
+            continue
+        process = tm1.processes.get(process_name)
+        with open(f'{base_location}/processes/{process_name}.json', 'w') as f:
+            json.dump(json.loads(process.body), f, indent=2)
+
+    # -------------------------------------------------------------------------
+    # Chores
+    # Exports all scheduled chores and their execution settings.
+    # -------------------------------------------------------------------------
+    print('\tExporting chores...')
+    for chore_name in tm1.chores.get_all_names():
+        chore = tm1.chores.get(chore_name)
+        with open(f'{base_location}/chores/{chore_name}.json', 'w') as f:
+            json.dump(json.loads(chore.body), f, indent=2)
+
+    # -------------------------------------------------------------------------
+    # Public Subsets
+    # Exports only public (shared) subsets — private subsets belong to
+    # individual users and are not part of the model.
+    # System dimensions are excluded.
+    # A subfolder is created per dimension.
+    # -------------------------------------------------------------------------
+    print('\tExporting public subsets...')
+    for dim_name in tm1.dimensions.get_all_names():
+        if any(dim_name.startswith(p) for p in EXCLUDE_PREFIXES):
+            continue
+        subset_names = tm1.subsets.get_all_names(
+            dimension_name=dim_name,
+            hierarchy_name=dim_name,
+            private=False
+        )
+        if not subset_names:
+            continue
+        os.makedirs(f'{base_location}/subsets/{dim_name}', exist_ok=True)
+        for subset_name in subset_names:
+            subset = tm1.subsets.get(
+                subset_name=subset_name,
+                dimension_name=dim_name,
+                hierarchy_name=dim_name,
+                private=False
+            )
+            with open(f'{base_location}/subsets/{dim_name}/{subset_name}.json', 'w') as f:
+                json.dump(json.loads(subset.body), f, indent=2)
+
+    # -------------------------------------------------------------------------
+    # Public Views
+    # Exports only public (shared) views — private views belong to
+    # individual users and are not part of the model.
+    # System cubes are excluded.
+    # A subfolder is created per cube.
+    # -------------------------------------------------------------------------
+    
+
+
+    print(f'\nExport complete. Files written to: {base_location}')
+
+# =============================================================================
+# GIT PUSH
+# Runs outside the TM1 connection block — no need to hold the connection open.
+# Guard prompt prevents accidental commits on every run.
+# =============================================================================
+PUSH_TO_GIT = True
+
+# Derive the repo root from base_location — one level up from model/
+repo_root = os.path.dirname(base_location)  # 'Update Production'
+
+if PUSH_TO_GIT:
+    commit_message = f"Model export - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+
+    subprocess.run(['git', 'init'], cwd=repo_root, check=True)
+
+    existing_remotes = subprocess.run(
+        ['git', 'remote'], capture_output=True, text=True, cwd=repo_root
+    ).stdout.strip().split()
+    if 'origin' not in existing_remotes:
+        subprocess.run(['git', 'remote', 'add', 'origin', repo_url], cwd=repo_root, check=True)
+
+    subprocess.run(['git', 'add', '.'], cwd=repo_root, check=True)
     subprocess.run(['git', 'commit', '-m', commit_message], cwd=repo_root, check=True)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Program Files\Python313\Lib\subprocess.py", line 579, in run
-    raise CalledProcessError(retcode, process.args,
-                             output=stdout, stderr=stderr)
-subprocess.CalledProcessError: Command '['git', 'commit', '-m', 'Model export - 2026-05-13 15:27']' returned non-zero exit status 1.
+
+    # Detect the actual branch name rather than assuming main or master
+    branch = subprocess.run(
+        ['git', 'rev-parse', '--abbrev-ref', 'HEAD'],
+        capture_output=True, text=True, cwd=repo_root
+    ).stdout.strip()
+
+    subprocess.run(['git', 'push', '-u', 'origin', branch], cwd=repo_root, check=True)
+
+    print(f'Pushed to GitHub: {repo_url}')
+else:
+    print('Git push skipped.')
+
